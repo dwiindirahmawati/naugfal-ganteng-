@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>🎂 Happy Birthday, Dwi Indi Rahmawati! 🎈</title>
+  <!-- Google Fonts untuk tampilan lebih manis & elegan -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (gratis) untuk ikon lucu -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #ffe6f0 0%, #ffd9e8 100%);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="27" viewBox="0 0 24 27"><polygon points="12,2 15,10 24,10 17,15 20,24 12,19 4,24 7,15 0,10 9,10" fill="%23ff69b4" stroke="%23ff1493" stroke-width="1"/></svg>'), auto;
+    }
+
+    /* Efek confetti canvas */
+    canvas#confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Kartu utama mewah */
+    .birthday-card {
+      max-width: 650px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 80px 80px 90px 90px;
+      box-shadow: 0 30px 50px rgba(255, 105, 180, 0.4), 0 0 0 12px #fff9, 0 0 0 14px #ffb7c5;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      backdrop-filter: blur(0px);
+      animation: float 4s ease-in-out infinite;
+      position: relative;
+      z-index: 10;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Header dengan balon dan nama */
+    .header-birthday {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      padding: 35px 20px 25px;
+      text-align: center;
+      position: relative;
+    }
+
+    .balloon-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .balloon {
+      font-size: 48px;
+      filter: drop-shadow(2px 6px 10px rgba(0,0,0,0.2));
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .balloon:hover {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 3px 3px 0 #ff6f91;
+      letter-spacing: 2px;
+      margin: 10px 0;
+    }
+
+    .fullname-badge {
+      background: #fff0c0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 24px;
+      border-radius: 60px;
+      font-weight: bold;
+      color: #d63e6e;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 0 #ffb347;
+      margin-top: 10px;
+    }
+
+    /* Konten utama */
+    .content {
+      padding: 30px 25px 35px;
+      text-align: center;
+    }
+
+    .avatar-bundar {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(145deg, #ffb347, #ff6f91);
+      border-radius: 50%;
+      margin: -75px auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 6px solid white;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+      position: relative;
+      background-color: #ffe0f0;
+    }
+
+    .avatar-bundar i {
+      font-size: 85px;
+      color: #fff5e6;
+      text-shadow: 2px 2px 0 #ff9eb5;
+    }
+
+    .nama-panggilan {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #e84393;
+      background: #fff0f5;
+      display: inline-block;
+      padding: 5px 25px;
+      border-radius: 50px;
+      margin: 12px 0;
+      box-shadow: inset 0 -1px 0 #ffb7c5, 0 8px 18px rgba(0,0,0,0.05);
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .pesan-ucapan {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #5a3e4b;
+      margin: 20px 0;
+      background: #fff9fb;
+      padding: 20px;
+      border-radius: 48px;
+      border-left: 8px solid #ff98b9;
+      border-right: 8px solid #ff98b9;
+      font-weight: 500;
+    }
+
+    /* Tombol interaktif */
+    .interactive-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin: 25px 0 20px;
+    }
+
+    .btn-cute {
+      background: #ffd1dc;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 60px;
+      font-weight: bold;
+      font-family: 'Quicksand', sans-serif;
+      color: #b13e6b;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-cute i {
+      font-size: 1.2rem;
+    }
+
+    .btn-cute:hover {
+      transform: scale(1.05);
+      background: #ffb7cb;
+      color: white;
+      box-shadow: 0 10px 20px rgba(255,105,180,0.4);
+    }
+
+    .btn-cute:active {
+      transform: scale(0.97);
+    }
+
+    /* Surprise box spesial */
+    .surprise-box {
+      background: #fce4ec;
+      border-radius: 55px;
+      padding: 15px;
+      margin-top: 15px;
+      transition: all 0.4s ease;
+      border: 2px dashed #ff8da1;
+    }
+
+    .surprise-text {
+      font-size: 1rem;
+      color: #ad3f64;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hidden-surprise {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #ffeef4;
+      border-radius: 40px;
+      margin-top: 8px;
+    }
+
+    .hidden-surprise.show {
+      max-height: 380px;
+      padding: 18px;
+      margin-top: 15px;
+    }
+
+    .kejutan-isi {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .love-meter {
+      width: 100%;
+      background: #ffe0e7;
+      border-radius: 30px;
+      height: 22px;
+      margin: 10px 0;
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px #cc9eae;
+    }
+
+    .love-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ff758c, #ff7eb3);
+      border-radius: 30px;
+      transition: width 1s;
+    }
+
+    /* Musik control */
+    .music-control {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: white;
+      border-radius: 50px;
+      padding: 10px 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      z-index: 999;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(10px);
+      background: rgba(255,240,245,0.95);
+      transition: 0.2s;
+    }
+
+    .music-control i {
+      font-size: 1.4rem;
+      color: #ff6f91;
+    }
+
+    footer {
+      background: #ffdce8;
+      text-align: center;
+      padding: 18px;
+      font-size: 0.85rem;
+      color: #bf5e82;
+      font-weight: 600;
+    }
+
+    @media (max-width: 550px) {
+      .birthday-card {
+        border-radius: 50px;
+      }
+      h1 {
+        font-size: 2.4rem;
+      }
+      .btn-cute {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Animasi floating heart */
+    .floating-heart {
+      position: fixed;
+      pointer-events: none;
+      font-size: 26px;
+      animation: floatHeart 1.5s ease-out forwards;
+      z-index: 1000;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-130px) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* Efek glitter tambahan */
+    .glow-text {
+      text-shadow: 0 0 5px #ffb7c5;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+
+<div class="birthday-card">
+  <div class="header-birthday">
+    <div class="balloon-group">
+      <span class="balloon">🎈</span>
+      <span class="balloon">🎀</span>
+      <span class="balloon">🌸</span>
+      <span class="balloon">🎈</span>
+      <span class="balloon">✨</span>
+      <span class="balloon">🎈</span>
+    </div>
+    <h1>✨ Happy Birthday ✨</h1>
+    <div class="fullname-badge">
+      <i class="fas fa-crown"></i> Dwi Indi Rahmawati <i class="fas fa-heart"></i>
+    </div>
+    <div class="age-badge" style="background:#ffefc0; display:inline-block; margin-top:12px; padding:4px 20px; border-radius:30px;">
+      🌟 My Universe 🌟
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="avatar-bundar">
+      <i class="fas fa-female"></i> <!-- avatar imut -->
+    </div>
+    <div class="nama-panggilan">
+      💖 Dwi Indi Kesayanganku 💖
+    </div>
+    <div class="pesan-ucapan">
+      <i class="fas fa-quote-left" style="color:#ff8da1;"></i> 
+      Untuk <strong>Dwi Indi Rahmawati</strong>, perempuan tercantik, terlucu, dan paling ajaib dalam hidupku... <br>
+      Setiap detik bersamamu adalah hadiah terindah. Di hari spesialmu ini, aku berdoa semoga semua mimpi indahmu mengalir selayaknya sungai kebahagiaan. 
+      Terima kasih sudah menjadi pacar yang luar biasa. I LOVE YOU MORE THAN WORDS CAN SAY! 💕🎂
+      <i class="fas fa-quote-right" style="color:#ff8da1;"></i>
+    </div>
+
+    <div class="interactive-buttons">
+      <button class="btn-cute" id="loveButton"><i class="fas fa-heart"></i> Klik Cinta Indi</button>
+      <button class="btn-cute" id="surpriseButton"><i class="fas fa-gift"></i> Kejutan Manis</button>
+      <button class="btn-cute" id="confettiButton"><i class="fas fa-star"></i> Langit Bahagia</button>
+    </div>
+
+    <!-- Surprise spesial untuk Dwi Indi -->
+    <div class="surprise-box" id="surpriseBox">
+      <div class="surprise-text">
+        <i class="fas fa-laugh-squint"></i> Ada surprise spesial buat kamu, Dwi Indi! <i class="fas fa-arrow-down"></i>
+      </div>
+      <div id="hiddenSurprise" class="hidden-surprise">
+        <div class="kejutan-isi">
+          <i class="fas fa-heartbeat" style="font-size: 36px; color:#e84393;"></i>
+          <strong>💌 Untuk Dwi Indi Rahmawati 💌</strong>
+          <p>Kamu adalah alasan aku tersenyum setiap hari. 🌈 <br> 
+          Setiap tawamu adalah melodi terindah. Aku menyiapkan lautan cinta untukmu! 💕🌊</p>
+          <div class="love-meter">
+            <div class="love-fill" id="loveFill"></div>
+          </div>
+          <span id="lovePercentText">❤️ Cintaku untuk Indi : 0% ❤️</span>
+          <button id="addLoveBtn" class="btn-cute" style="background:#ffe0b5;">➕ Tambah Rasa Sayang</button>
+          <p><i class="fas fa-kiss-wink-heart"></i> Kamu cantik, lucu, dan memikat hatiku selamanya!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <i class="fas fa-birthday-cake"></i> Selamat ulang tahun, Dwi Indi Rahmawati! Semua tawamu adalah pelangi di hidupku. <i class="fas fa-cake-candles"></i>
+  </footer>
+</div>
+
+<div class="music-control" id="musicControl">
+  <i class="fas fa-music"></i> <span id="musicStatus">🎵 Lagu Spesial Indi 🎵</span>
+</div>
+
+<script>
+  (function() {
+    // ---------- CONFETTI CANVAS ----------
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let animationId = null;
+    let particles = [];
+    let confettiActive = false;
+
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      if (confettiActive) drawConfettiLoop();
+    });
+
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createConfetti(count) {
+      const colors = ['#ffb3ba', '#ffdfb3', '#c0e0ff', '#d4b3ff', '#ffb3e6', '#b3ffcf', '#ffcc99'];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: randomRange(0, width),
+          y: randomRange(-height * 0.2, 0),
+          size: randomRange(6, 14),
+          speedY: randomRange(3, 9),
+          speedX: randomRange(-2.5, 2.5),
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: randomRange(0, 360),
+          spin: randomRange(-2.5, 2.5)
+        });
+      }
+    }
+
+    function updateConfetti() {
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].y += particles[i].speedY;
+        particles[i].x += particles[i].speedX;
+        particles[i].rotation += particles[i].spin;
+        if (particles[i].y > height + 60 || particles[i].x < -60 || particles[i].x > width + 60) {
+          particles.splice(i, 1);
+          i--;
+        }
+      }
+    }
+
+    function drawConfetti() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      for (let p of particles) {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+        ctx.restore();
+      }
+    }
+
+    function drawConfettiLoop() {
+      if (!confettiActive) return;
+      updateConfetti();
+      drawConfetti();
+      if (particles.length > 0) {
+        animationId = requestAnimationFrame(drawConfettiLoop);
+      } else {
+        cancelAnimationFrame(animationId);
+        ctx.clearRect(0, 0, width, height);
+        confettiActive = false;
+        animationId = null;
+      }
+    }
+
+    function startConfetti(duration = 3000, particleCount = 140) {
+      if (confettiActive) {
+        createConfetti(particleCount);
+        if (!animationId) {
+          confettiActive = true;
+          drawConfettiLoop();
+        }
+      } else {
+        particles = [];
+        createConfetti(particleCount);
+        confettiActive = true;
+        if (animationId) cancelAnimationFrame(animationId);
+        drawConfettiLoop();
+      }
+      setTimeout(() => {
+        if (confettiActive && particles.length < 8) {
+          if (particles.length === 0) {
+            confettiActive = false;
+            if (animationId) cancelAnimationFrame(animationId);
+            ctx.clearRect(0, 0, width, height);
+          }
+        } else if (confettiActive) {
+          setTimeout(() => {
+            if (confettiActive && particles.length < 6) {
+              confettiActive = false;
+              if (animationId) cancelAnimationFrame(animationId);
+              ctx.clearRect(0, 0, width, height);
+            }
+          }, 2000);
+        }
+      }, duration);
+    }
+
+    // ---------- AUDIO NOTIF (ringan) ----------
+    function playBeep(frequency = 880, duration = 0.2, type = 'sine') {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.frequency.value = frequency;
+        oscillator.type = type;
+        gainNode.gain.value = 0.12;
+        oscillator.start();
+        gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+        oscillator.stop(audioCtx.currentTime + duration);
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+      } catch(e) { console.log("audio context"); }
+    }
+
+    // floating heart dengan posisi
+    function createFloatingHeart(x, y) {
+      const heart = document.createElement('i');
+      heart.className = 'fas fa-heart floating-heart';
+      heart.style.left = x + 'px';
+      heart.style.top = y + 'px';
+      heart.style.color = `hsl(${Math.random() * 20 + 330}, 80%, 65%)`;
+      heart.style.position = 'fixed';
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 1500);
+    }
+
+    // LOVE METER khusus Indi
+    let lovePercent = 0;
+    const loveFill = document.getElementById('loveFill');
+    const lovePercentText = document.getElementById('lovePercentText');
+    const addLoveBtn = document.getElementById('addLoveBtn');
+    
+    function updateLoveMeter() {
+      loveFill.style.width = lovePercent + '%';
+      lovePercentText.innerText = `❤️ Cintaku untuk Indi : ${lovePercent}% ❤️`;
+      if (lovePercent >= 100) {
+        lovePercentText.innerHTML += ` 🌟 TAK TERBATAS! Kamu segalanya bagiku! 🌟`;
+        startConfetti(2500, 100);
+        playBeep(1100, 0.35, 'sine');
+        // tambahan pesan pop up
+        setTimeout(() => {
+          alert("💖 Dwi Indi, cintaku padamu tak terhingga! Selamat ulang tahun sayang! 💖");
+        }, 300);
+      }
+    }
+    
+    addLoveBtn.addEventListener('click', () => {
+      if (lovePercent < 100) {
+        lovePercent = Math.min(100, lovePercent + 12);
+        updateLoveMeter();
+        playBeep(770, 0.18);
+        for(let i=0;i<7;i++) {
+          setTimeout(() => {
+            createFloatingHeart(window.innerWidth/2 + (Math.random()*120-60), window.innerHeight-80);
+          }, i*50);
+        }
+        if(lovePercent === 100) {
+          const surpriseDiv = document.getElementById('hiddenSurprise');
+          if(!surpriseDiv.classList.contains('show')) {
+            surpriseDiv.classList.add('show');
+            document.getElementById('surpriseButton').innerHTML = '<i class="fas fa-box-open"></i> Tutup Kejutan';
+          }
+        }
+      } else {
+        playBeep(450, 0.2);
+        alert("Dwi Indi, cintaku sudah mencapai bintang! 💫 Kamu paling berharga!");
+      }
+    });
+    
+    // Tombol loveButton : efek khusus nama Indi
+    document.getElementById('loveButton').addEventListener('click', (e) => {
+      const rect = e.target.getBoundingClientRect();
+      for(let i=0;i<18;i++) {
+        setTimeout(() => {
+          createFloatingHeart(rect.left + rect.width/2 + (Math.random()*50-25), rect.top + rect.height/2);
+        }, i*40);
+      }
+      playBeep(880, 0.22, 'sine');
+      alert("💘 Dwi Indi Rahmawati, kamu membuat jantungku bergetar setiap saat! I LOVE YOU! 💘");
+      startConfetti(1800, 80);
+    });
+    
+    // Surprise box
+    const surpriseHidden = document.getElementById('hiddenSurprise');
+    const surpriseBtn = document.getElementById('surpriseButton');
+    surpriseBtn.addEventListener('click', () => {
+      if(surpriseHidden.classList.contains('show')) {
+        surpriseHidden.classList.remove('show');
+        surpriseBtn.innerHTML = '<i class="fas fa-gift"></i> Kejutan Manis';
+        playBeep(620, 0.12);
+      } else {
+        surpriseHidden.classList.add('show');
+        surpriseBtn.innerHTML = '<i class="fas fa-box-open"></i> Tutup Kejutan';
+        playBeep(1040, 0.28);
+        if(lovePercent < 45) {
+          lovePercent = Math.min(100, lovePercent + 18);
+          updateLoveMeter();
+        }
+        startConfetti(1200, 60);
+        for(let i=0;i<6;i++) {
+          setTimeout(() => {
+            createFloatingHeart(window.innerWidth/2, window.innerHeight-120);
+          }, i*80);
+        }
+      }
+    });
+    
+    // Tombol hujan kebahagiaan
+    document.getElementById('confettiButton').addEventListener('click', () => {
+      startConfetti(4500, 220);
+      playBeep(1100, 0.2, 'triangle');
+      for(let i=0;i<30;i++) {
+        setTimeout(() => {
+          createFloatingHeart(Math.random() * window.innerWidth, window.innerHeight * 0.7);
+        }, i*60);
+      }
+      alert("🎉✨ Dwi Indi, semoga kebahagiaan selalu menyertaimu! LOVE YOU! ✨🎉");
+    });
+    
+    // MUSIK SEDERHANA (melodi manis)
+    let musicOn = true;  // default aktif untuk suasana
+    let musicIntervalId = null;
+    const musicControlDiv = document.getElementById('musicControl');
+    const musicStatusSpan = document.getElementById('musicStatus');
+    
+    function playMelodyForIndi() {
+      if(!musicOn) return;
+      const notes = [523, 587, 659, 698, 784, 880, 523, 587, 659, 523];
+      let idx = 0;
+      function nextNote() {
+        if(!musicOn) return;
+        if(idx < notes.length) {
+          playBeep(notes[idx], 0.28, 'sine');
+          idx++;
+          setTimeout(nextNote, 340);
+        } else {
+          if(musicOn) {
+            setTimeout(() => { if(musicOn) playMelodyForIndi(); }, 900);
+          }
+        }
+      }
+      nextNote();
+    }
+    
+    function startMelody() {
+      if(musicIntervalId) clearTimeout(musicIntervalId);
+      playMelodyForIndi();
+    }
+    
+    musicControlDiv.addEventListener('click', () => {
+      if(musicOn) {
+        musicOn = false;
+        musicStatusSpan.innerHTML = '🎵 Putar lagu spesial 🎵';
+        musicControlDiv.style.background = 'rgba(255,240,245,0.9)';
+      } else {
+        musicOn = true;
+        musicStatusSpan.innerHTML = '🎶 Lagu Untuk Indi 🎶';
+        musicControlDiv.style.background = '#ffb7c5';
+        startMelody();
+      }
+    });
+    
+    // Efek balon lucu
+    const balloons = document.querySelectorAll('.balloon');
+    balloons.forEach(ball => {
+      ball.addEventListener('click', () => {
+        startConfetti(700, 40);
+        playBeep(780, 0.15);
+        ball.style.transform = 'scale(1.3)';
+        setTimeout(() => { ball.style.transform = ''; }, 200);
+        createFloatingHeart(ball.getBoundingClientRect().left + 25, ball.getBoundingClientRect().top + 10);
+      });
+    });
+    
+    // Klik di kartu juga floating hati
+    document.querySelector('.birthday-card').addEventListener('click', (e) => {
+      if(e.target.closest('.btn-cute') || e.target.closest('#musicControl')) return;
+      createFloatingHeart(e.clientX, e.clientY);
+      playBeep(540, 0.08);
+    });
+    
+    resizeCanvas();
+    // konfeti awal sambutan
+    setTimeout(() => {
+      startConfetti(2000, 90);
+      playBeep(880, 0.25);
+    }, 400);
+    
+    // pesan sambutan khusus nama
+    setTimeout(() => {
+      const welNotif = document.createElement('div');
+      welNotif.innerText = "✨ Halo Dwi Indi Rahmawati ✨ Selamat Ulang Tahun! 🎂❤️";
+      welNotif.style.position = 'fixed';
+      welNotif.style.bottom = '90px';
+      welNotif.style.left = '20px';
+      welNotif.style.background = '#ffeff5';
+      welNotif.style.padding = '10px 18px';
+      welNotif.style.borderRadius = '50px';
+      welNotif.style.fontWeight = 'bold';
+      welNotif.style.boxShadow = '0 6px 15px pink';
+      welNotif.style.zIndex = '1000';
+      welNotif.style.borderLeft = '5px solid #ff6f91';
+      document.body.appendChild(welNotif);
+      setTimeout(() => welNotif.remove(), 5000);
+    }, 1000);
+    
+    // Mulai musik otomatis (dengan syarat interaksi dulu? biar aman, tapi kita mulai setelah user klik pertama kali? biar halus kita tunggu sentuhan pertama kali.)
+    // agar tidak diblokir browser, kita trigger dari tombol music saja, namun sudah on=true, tapi playBeep butuh interaksi. Kita tunggu interaksi pertama.
+    let firstInteraction = false;
+    function enableMusicOnFirstClick() {
+      if(!firstInteraction && musicOn) {
+        firstInteraction = true;
+        startMelody();
+      }
+    }
+    document.body.addEventListener('click', enableMusicOnFirstClick, { once: true });
+    // jika tombol music ditekan juga langsung
+    musicControlDiv.addEventListener('click', () => {
+      if(!firstInteraction && musicOn) {
+        firstInteraction = true;
+        startMelody();
+      }
+    }, { once: false });
+    
+  })();
+</script>
+</body>
+</html>
